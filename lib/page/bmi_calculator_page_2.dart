@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:songdo_flutter_studty_2/page/bmi_calculator_result.dart';
 
 import '../note/icon.dart';
 import '../note/move_page_receive.dart';
@@ -52,15 +53,15 @@ class _BMIPage2State extends State<BMIPage2> {
               String wightString = wightController.text;
 
               int height = int.tryParse(heightString) ?? 0;
-              int wight = int.tryParse(wightString) ?? 0;
+              int weight = int.tryParse(wightString) ?? 0;
+
+              double bmi = weight / ((height / 100) * (height / 100));
+              print("bmi:$bmi");
 
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MovePageReceiveExample(
-                    height: height,
-                    wight: wight,
-                  ),
+                  builder: (context) => BMICalCulatorResult(bmi: bmi),
                 ),
               );
             },
