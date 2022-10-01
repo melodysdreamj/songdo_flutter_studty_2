@@ -24,6 +24,14 @@ class _ButtonExampleState extends State<ButtonExample> {
 
         /// //////////////////////////
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          /// //////////////////
+          print("hello world");
+          /// //////////////////
+        },
+        child: Icon(Icons.sentiment_satisfied),
+      ),
     );
   }
 }
