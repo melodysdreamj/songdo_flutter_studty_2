@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
 /// Description:
 ///
 class CounterPage extends StatefulWidget {
-  const CounterPage({super.key});
+  const CounterPage({Key? key}) : super(key: key);
 
   @override
   State<CounterPage> createState() => _CounterPageState();

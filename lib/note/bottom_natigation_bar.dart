@@ -31,6 +31,8 @@ class _BotoomNavigationBarExampleState
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
         currentIndex: _currentIndex,
         onTap: (index){
           _currentIndex = index;

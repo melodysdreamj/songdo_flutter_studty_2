@@ -12,16 +12,18 @@ class _ButtonExampleState extends State<ButtonExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child:
+        child:
 
-              /// //////////////////////////
-              ElevatedButton(
-        onPressed: () {},
-        child: Text("클릭하세요"),
+            /// //////////////////////////
+            ElevatedButton(
+          onPressed: () {
+            print("hello");
+          },
+          child: Text("클릭하세요"),
+        ),
+
+        /// //////////////////////////
       ),
-
-          /// //////////////////////////
-          ),
     );
   }
 }
