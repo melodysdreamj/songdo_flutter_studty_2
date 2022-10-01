@@ -35,8 +35,8 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
               controller: wightController,
               cursorColor: Colors.red,
               decoration: InputDecoration(
-                  hintText: "몸무게",
-                  labelText: "70",
+                  hintText: "70",
+                  labelText: "몸무게",
                   border: OutlineInputBorder()),
             ),
           ),

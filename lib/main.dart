@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'note/text_filed.dart';
-import 'page/bmi_calcurator_page.dart';
+import 'page/bmi_calculator_page_2.dart';
 import 'page/counter_page.dart';
 
 class BotoomNavigationBarExample extends StatefulWidget {
@@ -25,7 +25,7 @@ class _BotoomNavigationBarExampleState
         index: _currentIndex,
         children: [
           CounterPage(),
-          BMICalculatorPage(),
+          BMIPage2(),
           Container(color: Colors.yellow,),
           Container(color: Colors.green,),
         ],
@@ -55,13 +55,13 @@ class _BotoomNavigationBarExampleState
               icon: Icon(
                 Icons.music_note,
               ),
-              label: "활동"
+              label: "음악"
           ),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.menu,
               ),
-              label: "활동"
+              label: "메뉴"
           ),
         ],
       ),
