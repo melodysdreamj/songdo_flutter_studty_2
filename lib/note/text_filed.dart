@@ -8,6 +8,8 @@ class TextFiledExample extends StatefulWidget {
 }
 
 class _TextFiledExampleState extends State<TextFiledExample> {
+  TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +18,9 @@ class _TextFiledExampleState extends State<TextFiledExample> {
 
             /// //////////////////////////
             TextField(
-          cursorColor: Colors.red,
+              controller: controller,
+              keyboardType: TextInputType.number,
+              cursorColor: Colors.red,
           decoration: InputDecoration(
               hintText: "송도 플러터",
               labelText: "송도 화이팅",
@@ -24,6 +28,14 @@ class _TextFiledExampleState extends State<TextFiledExample> {
         ),
 
         /// //////////////////////////
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          /// //////////////////
+          print(controller.text);
+          /// //////////////////
+        },
+        child: Icon(Icons.sentiment_satisfied),
       ),
     );
   }

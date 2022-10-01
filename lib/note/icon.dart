@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class NewExample extends StatefulWidget {
-  const NewExample({Key? key}) : super(key: key);
+class IconExample extends StatefulWidget {
+  const IconExample({Key? key}) : super(key: key);
 
   @override
-  State<NewExample> createState() => _NewExampleState();
+  State<IconExample> createState() => _IconExampleState();
 }
 
-class _NewExampleState extends State<NewExample> {
+class _IconExampleState extends State<IconExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,5 +22,5 @@ class _NewExampleState extends State<NewExample> {
 }
 
 main() {
-  runApp(MaterialApp(home: NewExample(),));
+  runApp(MaterialApp(home: IconExample(),));
 }
