@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:songdo_flutter_studty_2/page/bmi_calculator_result.dart';
-
+import '../main.dart';
 import '../note/icon.dart';
 import '../note/move_page_receive.dart';
 
 class BMIPage2 extends StatefulWidget {
   const BMIPage2({Key? key}) : super(key: key);
 
+
   @override
   State<BMIPage2> createState() => _BMIPage2State();
 }
+enum Gender {MAN,WOMEN}
 
 class _BMIPage2State extends State<BMIPage2> {
   TextEditingController heightController = TextEditingController();
   TextEditingController wightController = TextEditingController();
 
+  Gender _gender = Gender.MAN;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [
+        children: <Widget>[
+
           SizedBox(
             height: 80,
           ),
@@ -46,7 +51,31 @@ class _BMIPage2State extends State<BMIPage2> {
                   labelText: "몸무게",
                   border: OutlineInputBorder()),
             ),
+
           ),
+          RadioListTile(
+            title: Text('남자'),
+            value: Gender.MAN,
+            groupValue: _gender,
+            onChanged: (value) {
+              setState(() {
+                sex = 0;
+                _gender = value!;
+              });
+            },
+          ),
+          RadioListTile(
+            title: Text('여자'),
+            value: Gender.WOMEN,
+            groupValue: _gender,
+            onChanged: (value) {
+              setState(() {
+                sex = 1;
+                _gender = value!;
+              });
+            },
+          ),
+
           ElevatedButton(
             onPressed: () {
               String heightString = heightController.text;
@@ -55,8 +84,19 @@ class _BMIPage2State extends State<BMIPage2> {
               int height = int.tryParse(heightString) ?? 0;
               int weight = int.tryParse(wightString) ?? 0;
 
-              double bmi = weight / ((height / 100) * (height / 100));
+              bmi = weight / ((height / 100) * (height / 100));
+
+              if(sex == 0) {
+                StandardWeight = (height / 100) * (height / 100) * 22;
+              }
+              else {
+                StandardWeight = (height / 100) * (height / 100) * 21;
+              }
+
+              PIBW = (weight / StandardWeight) * 100;
+
               print("bmi:$bmi");
+              print("PIBW:$PIBW");
 
               Navigator.push(
                 context,
@@ -65,7 +105,7 @@ class _BMIPage2State extends State<BMIPage2> {
                 ),
               );
             },
-            child: Text("클릭하세요"),
+            child: Text("계산"),
           ),
         ],
       ),

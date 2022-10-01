@@ -4,22 +4,37 @@ import 'note/text_filed.dart';
 import 'page/bmi_calculator_page_2.dart';
 import 'page/counter_page.dart';
 
-class BotoomNavigationBarExample extends StatefulWidget {
-  const BotoomNavigationBarExample({Key? key}) : super(key: key);
+var sex = 0;
+var bmi;
+var StandardWeight;
+var PIBW;
+var result_PIBW;
+
+class BottomNavigationBarExample extends StatefulWidget {
+  const BottomNavigationBarExample.BottomNavigatonBarExample({Key? key}) : super(key: key);
 
   @override
-  State<BotoomNavigationBarExample> createState() =>
-      _BotoomNavigationBarExampleState();
+  State<BottomNavigationBarExample> createState() =>
+      _BottomNavigationBarExampleState();
 }
 
-class _BotoomNavigationBarExampleState
-    extends State<BotoomNavigationBarExample> {
+class _BottomNavigationBarExampleState
+    extends State<BottomNavigationBarExample> {
 
   int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+
+      appBar:AppBar(
+        backgroundColor: const Color(0xff00c7ff),
+        elevation: 0,
+        title: Text('GDG_Study'),
+
+        centerTitle:true
+      ),
       body:
       IndexedStack(
         index: _currentIndex,
@@ -47,21 +62,21 @@ class _BotoomNavigationBarExampleState
           ),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.favorite,
+                Icons.edit_calendar_outlined,
               ),
-              label: "활동"
+              label: "BMI Cal"
           ),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.music_note,
+                Icons.check_circle_outline_outlined,
               ),
-              label: "음악"
+              label: "체크 리스트"
           ),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.menu,
+                Icons.update_sharp,
               ),
-              label: "메뉴"
+              label: "설정"
           ),
         ],
       ),
@@ -71,6 +86,7 @@ class _BotoomNavigationBarExampleState
 
 main() {
   runApp(MaterialApp(
-    home: BotoomNavigationBarExample(),
+    debugShowCheckedModeBanner: false,
+    home: BottomNavigationBarExample.BottomNavigatonBarExample(),
   ));
 }
