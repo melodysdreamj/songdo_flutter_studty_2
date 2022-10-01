@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'text_filed.dart';
+
 class BotoomNavigationBarExample extends StatefulWidget {
   const BotoomNavigationBarExample({Key? key}) : super(key: key);
 
@@ -16,11 +18,19 @@ class _BotoomNavigationBarExampleState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: [
-        Container(color: Colors.red,),
-        Container(color: Colors.blue,),
-      ][_currentIndex],
+      body:
+      IndexedStack(
+        index: _currentIndex,
+        children: [
+          Container(color: Colors.red,),
+          TextFiledExample(),
+          Container(color: Colors.yellow,),
+          Container(color: Colors.green,),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
         currentIndex: _currentIndex,
         onTap: (index){
           _currentIndex = index;
@@ -38,6 +48,18 @@ class _BotoomNavigationBarExampleState
               Icons.favorite,
             ),
             label: "활동"
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.music_note,
+              ),
+              label: "활동"
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.menu,
+              ),
+              label: "활동"
           ),
         ],
       ),

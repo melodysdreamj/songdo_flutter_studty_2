@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class NewExample extends StatefulWidget {
-  const NewExample({Key? key}) : super(key: key);
+class TextFiledExample extends StatefulWidget {
+  const TextFiledExample({Key? key}) : super(key: key);
 
   @override
-  State<NewExample> createState() => _NewExampleState();
+  State<TextFiledExample> createState() => _TextFiledExampleState();
 }
 
-class _NewExampleState extends State<NewExample> {
+class _TextFiledExampleState extends State<TextFiledExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +31,6 @@ class _NewExampleState extends State<NewExample> {
 
 main() {
   runApp(MaterialApp(
-    home: NewExample(),
+    home: TextFiledExample(),
   ));
 }
