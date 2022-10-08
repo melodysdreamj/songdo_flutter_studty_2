@@ -23,7 +23,7 @@ class _TodoPageState extends State<TodoPage> {
   var map2 = { 'a' : TodoModel() };
 
   @override
-  Widget build(BuildContext context) {
+  Widget build1(BuildContext context) {
     return Scaffold(
       body:
       Column(
@@ -152,9 +152,104 @@ class _TodoPageState extends State<TodoPage> {
       // ),
     );
   }
+
+  @override
+  Widget build(BuildContext context) => Column(
+    children: [
+      Expanded(
+        child: ListView.builder(
+          itemCount: _todoList.length,
+          itemBuilder: (BuildContext context, int index) => _ListItem(
+            item: _todoList[index].title,
+            onLongPress: (item) async {
+              final result = await showDialog<String>(
+                context: context,
+                builder: (context) => _TODOListCustomDialog(item: item),
+              );
+              setState(() {
+                if (result == 'Delete') {
+                  _todoList.removeAt(index);
+                } else {
+                  print(result);
+                  _todoList[index].title = result ?? '';
+                }
+              });
+            },
+          ),
+        ),
+      ),
+      Container(
+        padding: const EdgeInsets.all(16),
+        color: Colors.white,
+        child: Row(
+          children: [
+            Expanded(
+              child: TextFormField(
+                controller: _todoController,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), hintText: '할일 입력'),
+              ),
+            ),
+            const SizedBox(width: 16),
+            SizedBox(
+              width: 72,
+              height: 56,
+              child: ElevatedButton(
+                onPressed: _onPressed,
+                child: const Text('add'),
+              ),
+            )
+          ],
+        ),
+      ),
+    ],
+  );
+
+  void _onPressed() {
+    setState(() {
+      _todoList.add(TodoModel(title:_todoController.text));
+      _todoController.clear();
+    });
+  }
 }
 
+class _ListItem extends StatelessWidget {
+  const _ListItem({
+    Key? key,
+    required this.item,
+    required this.onLongPress,
+  }) : super(key: key);
 
+  final String item;
+
+  final void Function(String) onLongPress;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(8.0),
+        onLongPress: () {
+          onLongPress(item);
+        },
+        child: Container(
+          height: 56,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.0),
+            border: Border.all(width: 1, color: Colors.grey),
+          ),
+          child: Center(
+            child: Text(
+              item,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class _TODOListCustomDialog extends StatefulWidget {
   const _TODOListCustomDialog({Key? key, required this.item}) : super(key: key);
