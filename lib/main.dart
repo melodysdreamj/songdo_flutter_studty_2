@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:songdo_flutter_studty_2/note/3rd/todo_page.dart';
+import 'package:songdo_flutter_studty_2/page/TodoPage.dart';
 
-import 'note/text_filed.dart';
 import 'page/bmi_calcurator_page.dart';
 import 'page/counter_page.dart';
 
@@ -28,7 +27,6 @@ class _BotoomNavigationBarExampleState
           CounterPage(),
           BMICalculatorPage(),
           TodoPage(),
-          // Container(color: Colors.blue,),
           Container(color: Colors.green,),
         ],
       ),
