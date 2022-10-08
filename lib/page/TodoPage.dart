@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:songdo_flutter_studty_2/page/TodoDetailView.dart';
 
 class TodoPage extends StatefulWidget {
   const TodoPage({Key? key}) : super(key: key);
@@ -77,6 +78,35 @@ class _TodoPageState extends State<TodoPage> {
       elevation: 5,
       margin: const EdgeInsets.all(10),
       child: ListTile(
+        onTap: () {
+          print("onTap");
+          showDialog(context: context, builder:  (BuildContext context) {
+            return AlertDialog(
+              title: Text(todo.title),
+              content: Text(todo.content),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Close'),
+                ),
+              ],
+            );
+          });
+        },
+        onLongPress: () {
+          setState(() {
+            print('long press');
+            // 페이지 이동
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => TodoDetailView(
+
+                    )));
+          });
+        },
         title: Text(todo.title),
         subtitle: Text(todo.content),
       ),
@@ -100,3 +130,4 @@ class _TodoPageState extends State<TodoPage> {
         ));
   }
 }
+
