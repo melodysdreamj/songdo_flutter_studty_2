@@ -27,47 +27,71 @@ class _TodoPageState extends State<TodoPage> {
         children: [
           Expanded(
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
               itemCount: _todoList.length,
               itemBuilder: (context, index) {
-                return listItemWidget(_todoList[index]);
+                return listItemCardWidet(_todoList[index]);
               },
             ),
           ),
-          Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: _todoController ,
-                  decoration: const InputDecoration(
-                    hintText: 'Title',
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _todoController ,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Title',
+                    ),
                   ),
                 ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  print(_todoController.text);
-                  setState(() {
-                    _todoList.add(TodoModel(
-                      title: _todoController.text,
-                      content: _todoController.text, ));
-                  });
-                  _todoController.clear();
-
-                },
-                child: const Text('Adad'),
-              ),
-            ],
+                const SizedBox(width: 10,),
+                Container(
+                  height: 55,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      print(_todoController.text);
+                      if (_todoController.text.isNotEmpty) {
+                        setState(() {
+                          _todoList.add(TodoModel(title: _todoController.text,
+                              content: _todoController.text));
+                          _todoController.clear();
+                        });
+                      }
+                    },
+                    child: const Text('Add'),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
     );
   }
 
+  Widget listItemCardWidet(TodoModel todo) {
+    return Card(
+      elevation: 5,
+      margin: const EdgeInsets.all(10),
+      child: ListTile(
+        title: Text(todo.title),
+        subtitle: Text(todo.content),
+      ),
+    );
+  }
+
   Widget listItemWidget(TodoModel todo) {
     return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+          border: Border.all(width: 1, color: Colors.grey),
+        ),
         margin: const EdgeInsets.all(10),
-        color: Colors.cyanAccent,
-        height: 100,
+        //color: Colors.cyanAccent,
+        // height: 100,
         child: Column(
           children: [
             Text(todo.title),
