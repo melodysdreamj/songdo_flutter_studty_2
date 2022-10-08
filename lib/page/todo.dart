@@ -54,7 +54,7 @@ class _TodoPageState extends State<TodoPage> {
                   _todoController.clear();
 
                 },
-                child: const Text('Add'),
+                child: const Text('Adad'),
               ),
             ],
           ),
