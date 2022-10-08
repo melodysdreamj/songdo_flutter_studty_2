@@ -35,8 +35,11 @@ class _TodoPageState extends State<TodoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: _todoList.map((todo) => listItemWidget(todo),).toList(),
+      body: ListView.builder(
+        itemCount: _todoList.length,
+        itemBuilder: (context, index) {
+          return listItemWidget(_todoList[index]);
+        },
       ),
     );
   }
@@ -45,7 +48,7 @@ class _TodoPageState extends State<TodoPage> {
     return Expanded(
       child: Container(
           margin: const EdgeInsets.all(10),
-          color: Colors.red,
+          color: Colors.cyanAccent,
           height: 100,
           child: Column(
             children: [
