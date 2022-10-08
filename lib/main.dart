@@ -26,7 +26,7 @@ class _BotoomNavigationBarExampleState
         children: [
           CounterPage(),
           BMICalculatorPage(),
-          Container(color: Colors.yellow,),
+          Container(color: Colors.blue,),
           Container(color: Colors.green,),
         ],
       ),
@@ -43,19 +43,19 @@ class _BotoomNavigationBarExampleState
               icon: Icon(
                 Icons.home,
               ),
-              label: "홈"
+              label: "카운터"
           ),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.favorite,
               ),
-              label: "활동"
+              label: "BMI"
           ),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.music_note,
               ),
-              label: "활동"
+              label: "TODO"
           ),
           BottomNavigationBarItem(
               icon: Icon(

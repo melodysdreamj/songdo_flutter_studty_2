@@ -63,16 +63,19 @@ class _CounterPageState extends State<CounterPage> {
         mainAxisSize: MainAxisSize.min,
         children: [
           FloatingActionButton(
+            heroTag: 'btn1',
             onPressed: _incrementCounter,
             child: const Icon(Icons.exposure_plus_1),
           ),
           const SizedBox(height: 16),
           FloatingActionButton(
+            heroTag: 'btn2',
             onPressed: _decrementCounter,
             child: const Icon(Icons.exposure_minus_1),
           ),
           const SizedBox(height: 16),
           FloatingActionButton(
+            heroTag: 'btn3',
             onPressed: _initCounter,
             child: const Icon(Icons.exposure_zero_rounded),
           ),

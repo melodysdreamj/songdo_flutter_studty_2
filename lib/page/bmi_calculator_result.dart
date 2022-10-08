@@ -4,8 +4,15 @@ class BMICalCulatorResult extends StatefulWidget {
   BMICalCulatorResult({
     Key? key,
     required this.bmi,
+    this.height = 0,
+    this.weight  = 0,
+    this.gender = "",
   }) : super(key: key);
+
   double bmi;
+  int height;
+  int weight;
+  String gender;
 
   @override
   State<BMICalCulatorResult> createState() => _BMICalCulatorResultState();
@@ -73,8 +80,4 @@ class _BMICalCulatorResultState extends State<BMICalCulatorResult> {
       ],
     );
   }
-}
-
-main() {
-  runApp(MaterialApp(home: BMICalCulatorResult(bmi: 31,),));
 }
