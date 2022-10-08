@@ -20,6 +20,7 @@ class _TodoPageState extends State<TodoPage> {
 
   final List<TodoModel> _todoList = [];
   final _todoController = TextEditingController();
+  final _todoUpdateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -78,22 +79,50 @@ class _TodoPageState extends State<TodoPage> {
       elevation: 5,
       margin: const EdgeInsets.all(10),
       child: ListTile(
-        onTap: () {
+        onTap: () async {
           print("onTap");
-          showDialog(context: context, builder:  (BuildContext context) {
+          _todoUpdateController.text = todo.content;
+          var ret = await showDialog(
+              context: context, builder: (BuildContext context) {
             return AlertDialog(
               title: Text(todo.title),
-              content: Text(todo.content),
+              content: Container(
+                child: Expanded(
+                  child: TextField(
+                    controller: _todoUpdateController ,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Title',
+                    ),
+                  ),
+                ),
+              ),
               actions: [
                 TextButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.of(context).pop('Delete');
                   },
-                  child: const Text('Close'),
+                  child: const Text('Delete'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop('Update');
+                  },
+                  child: const Text('Update'),
                 ),
               ],
             );
           });
+          print(ret);
+          if (ret == 'Delete') {
+            setState(() {
+              _todoList.remove(todo);
+            });
+          } else if (ret == 'Update') {
+            setState(() {
+              todo.content = _todoUpdateController.text;
+            });
+          }
         },
         onLongPress: () {
           setState(() {
@@ -103,7 +132,7 @@ class _TodoPageState extends State<TodoPage> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => TodoDetailView(
-
+                        todo: todo,
                     )));
           });
         },
