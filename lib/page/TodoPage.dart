@@ -27,6 +27,7 @@ class _TodoPageState extends State<TodoPage> {
       children: [
         Expanded(
           child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
             itemCount: _todoList.length,
             itemBuilder: (context, index) {
               return listItemCardWidet(_todoList[index]);
