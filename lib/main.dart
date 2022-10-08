@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'note/text_filed.dart';
 import 'page/bmi_calculator_page_2.dart';
 import 'page/counter_page.dart';
+import 'page/todo.dart';
 
 var sex = 0;
 var bmi;
@@ -41,7 +42,7 @@ class _BottomNavigationBarExampleState
         children: [
           CounterPage(),
           BMIPage2(),
-          Container(color: Colors.yellow,),
+          TodoPage(),
           Container(color: Colors.green,),
         ],
       ),
