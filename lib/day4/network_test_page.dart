@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -34,6 +36,11 @@ class _NetworkTestPageState extends State<NetworkTestPage> {
   void initState() {
     super.initState();
     getData();
+    Timer.periodic(
+        Duration(seconds: 1),
+            (timer) {
+        getData();
+    });
   }
 
   @override

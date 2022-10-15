@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:songdo_flutter_studty_2/day4/async_test_page.dart';
 import 'package:songdo_flutter_studty_2/day4/network_test_page.dart';
+import 'package:songdo_flutter_studty_2/day4/timer_page.dart';
 import 'package:songdo_flutter_studty_2/day4/timer_test.dart';
 import 'package:songdo_flutter_studty_2/page/TodoPage.dart';
 
@@ -32,7 +33,8 @@ class _BotoomNavigationBarExampleState
           TodoPage(),
           // TimerTestPage(),
           // AsyncTestPage(),
-          NetworkTestPage(),
+          // NetworkTestPage(),
+          TimerPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
