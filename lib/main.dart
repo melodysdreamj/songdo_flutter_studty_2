@@ -8,16 +8,16 @@ import 'package:songdo_flutter_studty_2/page/TodoPage.dart';
 import 'page/bmi_calcurator_page.dart';
 import 'page/counter_page.dart';
 
-class BotoomNavigationBarExample extends StatefulWidget {
-  const BotoomNavigationBarExample({Key? key}) : super(key: key);
+class BottomNavigationBarExample extends StatefulWidget {
+  const BottomNavigationBarExample({Key? key}) : super(key: key);
 
   @override
-  State<BotoomNavigationBarExample> createState() =>
-      _BotoomNavigationBarExampleState();
+  State<BottomNavigationBarExample> createState() =>
+      _BottomNavigationBarExampleState();
 }
 
-class _BotoomNavigationBarExampleState
-    extends State<BotoomNavigationBarExample> {
+class _BottomNavigationBarExampleState
+    extends State<BottomNavigationBarExample> {
 
   int _currentIndex = 0;
 
@@ -78,6 +78,6 @@ class _BotoomNavigationBarExampleState
 
 main() {
   runApp(MaterialApp(
-    home: BotoomNavigationBarExample(),
+    home: BottomNavigationBarExample(),
   ));
 }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:songdo_flutter_studty_2/page/bmi_calculator_result.dart';
 
-import '../note/icon.dart';
-import '../note/move_page_receive.dart';
+import '../note/2rd/move_page_receive.dart';
 
 class BMIPage2 extends StatefulWidget {
   const BMIPage2({Key? key}) : super(key: key);
